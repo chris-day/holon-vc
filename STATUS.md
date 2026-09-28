@@ -227,3 +227,11 @@ No Rust behavior changed. The existing automated product workflow remains availa
 - Re-executed the manual walkthrough followed by the exact documented refresh
   block with the same password: exit 0; DID/status refresh preserved successful
   `trusted-assertion` verification of the existing credential.
+
+## Automatic documentation triggers — 2026-09-28
+
+Changed the workflow push filter to all branches (`branches: ['**']`), without
+path filters. Every branch push builds; artifact upload and Pages deployment
+remain restricted to `main`. Local commits must be pushed to trigger GitHub.
+Validated YAML trigger/deployment conditions, strict documentation build and
+`git diff --check`: all passed. Remote execution has not been triggered here.

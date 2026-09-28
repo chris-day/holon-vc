@@ -107,6 +107,9 @@ sources to `main`. Successful pushes to `main` then publish `site-docs/` at
 **https://chris-day.github.io/holon-vc/**. You can also select **Actions →
 Documentation → Run workflow** on `main` to rebuild and deploy manually.
 
+Every push to any branch automatically builds the documentation, with no file-path
+filters. Pushes to `main` also deploy after a successful build; pushes to other
+branches only build. Local commits trigger the workflow once pushed to GitHub.
 Pull requests targeting `main` build the documentation without publishing. Manual
 runs on other branches also only build. The deployment job receives the Pages and
 OIDC permissions, waits for the build, and uses the `github-pages` environment;
