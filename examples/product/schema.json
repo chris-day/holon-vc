@@ -1,0 +1,628 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:example:product-holon:1.0",
+  "title": "Demonstration product Holon",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "schemaVersion",
+    "claims",
+    "createdAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "type": {
+      "const": "ProductHolon"
+    },
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "claims": {
+      "type": "object",
+      "required": [
+        "product"
+      ],
+      "properties": {
+        "product": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "format": "uri"
+            },
+            "type": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sku": {
+              "type": "string",
+              "minLength": 1
+            },
+            "gtin14": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[0-9]{14}$"
+            },
+            "brand": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "type",
+                "name",
+                "url"
+              ],
+              "additionalProperties": false
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "contentUrl": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "caption": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "width": {
+                  "type": "number"
+                },
+                "height": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "type",
+                "url",
+                "contentUrl",
+                "caption",
+                "width",
+                "height"
+              ],
+              "additionalProperties": false
+            },
+            "offers": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "priceCurrency": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "price": {
+                  "type": "number"
+                },
+                "availability": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "priceValidUntil": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "itemCondition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "seller": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "url": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "name",
+                    "url"
+                  ],
+                  "additionalProperties": false
+                },
+                "shippingDetails": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "shippingRate": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "value": {
+                          "type": "number"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "value",
+                        "currency"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "shippingDestination": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "addressCountry": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "addressCountry"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "deliveryTime": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "handlingTime": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "minValue": {
+                              "type": "number"
+                            },
+                            "maxValue": {
+                              "type": "number"
+                            },
+                            "unitCode": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "minValue",
+                            "maxValue",
+                            "unitCode"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "transitTime": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "minValue": {
+                              "type": "number"
+                            },
+                            "maxValue": {
+                              "type": "number"
+                            },
+                            "unitCode": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "minValue",
+                            "maxValue",
+                            "unitCode"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "handlingTime",
+                        "transitTime"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "shippingRate",
+                    "shippingDestination",
+                    "deliveryTime"
+                  ],
+                  "additionalProperties": false
+                },
+                "hasMerchantReturnPolicy": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "applicableCountry": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "returnPolicyCategory": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "merchantReturnDays": {
+                      "type": "number"
+                    },
+                    "returnMethod": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "returnFees": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "applicableCountry",
+                    "returnPolicyCategory",
+                    "merchantReturnDays",
+                    "returnMethod",
+                    "returnFees"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "type",
+                "url",
+                "priceCurrency",
+                "price",
+                "availability",
+                "priceValidUntil",
+                "itemCondition",
+                "seller",
+                "shippingDetails",
+                "hasMerchantReturnPolicy"
+              ],
+              "additionalProperties": false
+            },
+            "review": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "reviewBody": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "datePublished": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "author": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "name"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "reviewRating": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "ratingValue": {
+                        "type": "number"
+                      },
+                      "bestRating": {
+                        "type": "number"
+                      },
+                      "worstRating": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "ratingValue",
+                      "bestRating",
+                      "worstRating"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "type",
+                  "name",
+                  "reviewBody",
+                  "datePublished",
+                  "author",
+                  "reviewRating"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "aggregateRating": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "ratingValue": {
+                  "type": "number"
+                },
+                "bestRating": {
+                  "type": "number"
+                },
+                "worstRating": {
+                  "type": "number"
+                },
+                "reviewCount": {
+                  "type": "number"
+                },
+                "ratingCount": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "type",
+                "ratingValue",
+                "bestRating",
+                "worstRating",
+                "reviewCount",
+                "ratingCount"
+              ],
+              "additionalProperties": false
+            },
+            "gs1:gtin": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[0-9]{14}$"
+            },
+            "gs1:brandName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "gs1:functionalName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "gs1:netContent": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "value": {
+                  "type": "number"
+                },
+                "unitCode": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "type",
+                "value",
+                "unitCode"
+              ],
+              "additionalProperties": false
+            },
+            "gs1:ingredientStatement": {
+              "type": "string",
+              "minLength": 1
+            },
+            "gs1:allergenStatement": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "name",
+            "url",
+            "sku",
+            "gtin14",
+            "brand",
+            "description",
+            "image",
+            "offers",
+            "review",
+            "aggregateRating",
+            "gs1:gtin",
+            "gs1:brandName",
+            "gs1:functionalName",
+            "gs1:netContent",
+            "gs1:ingredientStatement",
+            "gs1:allergenStatement"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "source"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uri"
+          },
+          "type": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "format": "uri"
+          },
+          "digest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "claimPaths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "relatedHolons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "relation"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uri"
+          },
+          "relation": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

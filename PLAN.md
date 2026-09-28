@@ -142,3 +142,27 @@ Clarifications made during implementation:
 - Acceptance: workflow structure and shell commands validate, the strict local
   build and dependency check pass, and generated canonical URLs include `/holon-vc/`.
 - Remote execution remains verifiable after the workflow is pushed and Pages enabled.
+
+## Product JSON-LD example — completed 2026-09-28
+
+- Preserve the supplied product object in `claims.product`, with distinct record
+  and credential IDs and a local demonstration issuer.
+- Add pinned scoped context and full/disclosure subject schemas; retain the
+  upstream Schema.org mappings and supplied GS1 prefix.
+- Issue and verify real Ed25519 and P-256 credentials; reject post-signature
+  price, ingredients and review changes; derive and verify actual disclosure.
+- Generate a minimal HTML embedding and document mapping, local trust, short-lived
+  pins and publication requirements. Add the workflow as a Cargo integration test.
+- Acceptance passed: 17 CLI operations, product preservation, three tamper
+  rejections, derived proof verification, HTML serialization round trip, strict
+  documentation build, formatting and Clippy.
+
+## Complete product documentation walkthrough — 2026-09-28
+
+- Include the complete supplied JSON-LD in the documentation via a source snippet.
+- Publish all commands for preparing pinned configuration, keys, suites, trust,
+  DID/status resources, issuance, verification, disclosure, tamper rejection and HTML.
+- Maintain the command blocks in `examples/product/walkthrough.sh` and include
+  its named sections in the guide so the published commands are executable.
+- Validate the manual sequence, resource refresh, strict site build and rendered
+  snippets. Add prerequisites, expected results, expiry guidance and troubleshooting.

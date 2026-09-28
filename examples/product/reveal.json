@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "selectivePointers": [
+    "/credentialSubject/claims/product/id",
+    "/credentialSubject/claims/product/type",
+    "/credentialSubject/claims/product/name",
+    "/credentialSubject/claims/product/gtin14",
+    "/credentialSubject/claims/product/gs1:gtin",
+    "/credentialSubject/claims/product/gs1:ingredientStatement",
+    "/credentialSubject/claims/product/gs1:allergenStatement"
+  ]
+}

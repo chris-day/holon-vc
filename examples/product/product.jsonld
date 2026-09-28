@@ -1,0 +1,141 @@
+{
+  "@context": [
+    "https://schema.org",
+    {
+      "gs1": {
+        "@id": "https://gs1.org/voc/",
+        "@prefix": true
+      }
+    }
+  ],
+  "id": "https://id.gs1.org/01/09506000134352",
+  "type": [
+    "Product",
+    "gs1:Product"
+  ],
+  "name": "Dal Giardino Risotto Rice with Mushrooms",
+  "url": "https://dalgiardino.com/risotto-rice-with-mushrooms/",
+  "sku": "DG-RRM-411-GB",
+  "gtin14": "09506000134352",
+  "brand": {
+    "type": "Brand",
+    "name": "Dal Giardino",
+    "url": "https://dalgiardino.com/"
+  },
+  "description": "A delicious mix of fragrant rice with Italian mushrooms.",
+  "image": {
+    "type": "ImageObject",
+    "url": "https://dalgiardino.com/risotto-rice-with-mushrooms/Dal_Giardino_Risotto_Rice_With_Nett_260.png",
+    "contentUrl": "https://dalgiardino.com/risotto-rice-with-mushrooms/Dal_Giardino_Risotto_Rice_With_Nett_260.png",
+    "caption": "Packshot of Dal Giardino Risotto Rice with Mushrooms, 411 g",
+    "width": 260,
+    "height": 260
+  },
+  "offers": {
+    "type": "Offer",
+    "url": "https://shop.dalgiardino.example/products/09506000134352",
+    "priceCurrency": "GBP",
+    "price": 4.49,
+    "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2027-06-30",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "type": "Organization",
+      "name": "Dal Giardino Demonstration Store",
+      "url": "https://shop.dalgiardino.example/"
+    },
+    "shippingDetails": {
+      "type": "OfferShippingDetails",
+      "shippingRate": {
+        "type": "MonetaryAmount",
+        "value": 0,
+        "currency": "GBP"
+      },
+      "shippingDestination": {
+        "type": "DefinedRegion",
+        "addressCountry": "GB"
+      },
+      "deliveryTime": {
+        "type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 4,
+          "unitCode": "DAY"
+        }
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "type": "MerchantReturnPolicy",
+      "applicableCountry": "GB",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30,
+      "returnMethod": [
+        "https://schema.org/ReturnByMail",
+        "https://schema.org/ReturnInStore"
+      ],
+      "returnFees": "https://schema.org/FreeReturn"
+    }
+  },
+  "review": [
+    {
+      "type": "Review",
+      "name": "Creamy and well seasoned",
+      "reviewBody": "Earthy mushroom flavour, a creamy texture and straightforward preparation for a quick supper.",
+      "datePublished": "2026-07-18",
+      "author": {
+        "type": "Person",
+        "name": "Maya Patel"
+      },
+      "reviewRating": {
+        "type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5,
+        "worstRating": 1
+      }
+    },
+    {
+      "type": "Review",
+      "name": "Convenient pantry meal",
+      "reviewBody": "A useful cupboard staple with a balanced mushroom taste; I added fresh parsley before serving.",
+      "datePublished": "2026-08-02",
+      "author": {
+        "type": "Person",
+        "name": "Oliver Evans"
+      },
+      "reviewRating": {
+        "type": "Rating",
+        "ratingValue": 4,
+        "bestRating": 5,
+        "worstRating": 1
+      }
+    }
+  ],
+  "aggregateRating": {
+    "type": "AggregateRating",
+    "ratingValue": 4.5,
+    "bestRating": 5,
+    "worstRating": 1,
+    "reviewCount": 2,
+    "ratingCount": 2
+  },
+  "gs1:gtin": "09506000134352",
+  "gs1:brandName": "Dal Giardino",
+  "gs1:functionalName": "Risotto rice with mushrooms",
+  "gs1:netContent": {
+    "type": [
+      "QuantitativeValue",
+      "gs1:QuantitativeValue"
+    ],
+    "value": 411,
+    "unitCode": "GRM"
+  },
+  "gs1:ingredientStatement": "Rice, Italian mushrooms, onion, sunflower oil, vegetable stock (salt, yeast extract, celery and herbs), garlic, parsley and black pepper.",
+  "gs1:allergenStatement": "Contains celery. Gluten free."
+}

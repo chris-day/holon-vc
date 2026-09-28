@@ -167,3 +167,63 @@ Verification:
 The workflow has not been pushed or run on GitHub, and repository Pages settings
 have not been changed. Remote publication requires committing/pushing these files
 and enabling GitHub Actions as the Pages source. No Rust behavior changed.
+
+## Product JSON-LD credential example — 2026-09-28
+
+Added `examples/product/` with the supplied product, scoped JSON-LD context,
+full/disclosure schemas and reveal selection. `scripts/product-workflow.py`
+wraps the unmodified product properties in a Holon and generates real credentials
+under `did:web:product-issuer.example`, using local pinned DID/status resources.
+No changes to the Rust cryptographic implementation were required.
+
+Verification (all exit 0):
+
+- `.venv/bin/python scripts/product-workflow.py`: PASS, 17 CLI operations.
+- `.venv/bin/python scripts/product-workflow.py --output /tmp/holon-product-example`:
+  PASS; retained actual Ed25519 and P-256 credentials, derived credential, reports,
+  Holon, HTML example and local private runtime directory.
+- `cargo test --locked --test product_example`: PASS, 1 test, 0 failures (10.21s).
+- `cargo fmt --check`: PASS.
+- `cargo clippy --locked --all-targets --all-features -- -D warnings`: PASS;
+  existing read-only dependency-cache diagnostics did not affect the result.
+- `bash scripts/docs.sh build`: PASS, no issues found.
+- `git diff --check`: PASS.
+
+Checks preserve all supplied product values in both full credentials, reject
+three modified credentials, and verify real P-256 disclosure without offers,
+reviews, aggregate ratings or SKU. HTML-safe JSON round-trips to the issued VC.
+The full pre-existing Rust test suite was not rerun for this example-only change.
+
+Limitations: local demonstration trust is not brand-owner authority or independent
+corroboration. Profile/context URNs require explicit distribution and configuration.
+Schemas validate this example's structure, not commercial or regulatory truth.
+Product offer dates are claims, not independently enforced credential expiry.
+The context subset preserves official HTTP Schema.org term IRIs and the supplied
+HTTPS GS1 prefix. Credentials/context pins last one day; generated resource pins
+last five minutes. The random private-key password is not retained. Generated
+HTML performs no live verification, and runtime `data/` must not be published.
+
+## Complete product documentation walkthrough — 2026-09-28
+
+Expanded `docs/PRODUCT_EXAMPLE.md` with the complete supplied JSON-LD and eight
+ordered manual steps, included directly from `examples/product/walkthrough.sh`.
+Added prerequisites, fresh-checkout commands, automated and manual routes,
+expected verification results, HTML generation, resource refresh, troubleshooting,
+and documentation build/preview commands. Manual keys use a user-chosen password
+passed via stdin, enabling later refresh; automated ephemeral keys remain unchanged.
+
+Validation:
+
+- `bash -n examples/product/walkthrough.sh`: PASS.
+- Executed the full manual shell script with a fresh random stdin password: exit 0;
+  all three credentials verified, disclosure exclusions passed, altered price
+  failed cryptographically with exit 5, and HTML generation passed.
+- `bash scripts/docs.sh build`: exit 0, no issues found.
+- Parsed generated HTML: complete product data and all command sections rendered;
+  no unresolved snippet directives.
+- `git diff --check`: PASS.
+
+No Rust behavior changed. The existing automated product workflow remains available.
+- Re-executed the manual walkthrough followed by the exact documented refresh
+  block with the same password: exit 0; DID/status refresh preserved successful
+  `trusted-assertion` verification of the existing credential.

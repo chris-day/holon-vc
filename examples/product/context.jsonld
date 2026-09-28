@@ -1,0 +1,206 @@
+{
+  "@context": [
+    "urn:holon:context:1.0",
+    {
+      "ProductHolon": "urn:example:ProductHolon",
+      "product": {
+        "@id": "urn:example:product",
+        "@context": {
+          "schema": "http://schema.org/",
+          "gs1": {
+            "@id": "https://gs1.org/voc/",
+            "@prefix": true
+          },
+          "AggregateRating": {
+            "@id": "schema:AggregateRating"
+          },
+          "Brand": {
+            "@id": "schema:Brand"
+          },
+          "DefinedRegion": {
+            "@id": "schema:DefinedRegion"
+          },
+          "ImageObject": {
+            "@id": "schema:ImageObject"
+          },
+          "MerchantReturnPolicy": {
+            "@id": "schema:MerchantReturnPolicy"
+          },
+          "MonetaryAmount": {
+            "@id": "schema:MonetaryAmount"
+          },
+          "Offer": {
+            "@id": "schema:Offer"
+          },
+          "OfferShippingDetails": {
+            "@id": "schema:OfferShippingDetails"
+          },
+          "Organization": {
+            "@id": "schema:Organization"
+          },
+          "Person": {
+            "@id": "schema:Person"
+          },
+          "Product": {
+            "@id": "schema:Product"
+          },
+          "QuantitativeValue": {
+            "@id": "schema:QuantitativeValue"
+          },
+          "Rating": {
+            "@id": "schema:Rating"
+          },
+          "Review": {
+            "@id": "schema:Review"
+          },
+          "ShippingDeliveryTime": {
+            "@id": "schema:ShippingDeliveryTime"
+          },
+          "addressCountry": {
+            "@id": "schema:addressCountry"
+          },
+          "aggregateRating": {
+            "@id": "schema:aggregateRating"
+          },
+          "applicableCountry": {
+            "@id": "schema:applicableCountry"
+          },
+          "author": {
+            "@id": "schema:author"
+          },
+          "availability": {
+            "@id": "schema:availability"
+          },
+          "bestRating": {
+            "@id": "schema:bestRating"
+          },
+          "brand": {
+            "@id": "schema:brand"
+          },
+          "caption": {
+            "@id": "schema:caption"
+          },
+          "contentUrl": {
+            "@id": "schema:contentUrl"
+          },
+          "currency": {
+            "@id": "schema:currency"
+          },
+          "datePublished": {
+            "@id": "schema:datePublished"
+          },
+          "deliveryTime": {
+            "@id": "schema:deliveryTime"
+          },
+          "description": {
+            "@id": "schema:description"
+          },
+          "gtin14": {
+            "@id": "schema:gtin14"
+          },
+          "handlingTime": {
+            "@id": "schema:handlingTime"
+          },
+          "hasMerchantReturnPolicy": {
+            "@id": "schema:hasMerchantReturnPolicy"
+          },
+          "height": {
+            "@id": "schema:height"
+          },
+          "id": "@id",
+          "image": {
+            "@id": "schema:image"
+          },
+          "itemCondition": {
+            "@id": "schema:itemCondition"
+          },
+          "maxValue": {
+            "@id": "schema:maxValue"
+          },
+          "merchantReturnDays": {
+            "@id": "schema:merchantReturnDays"
+          },
+          "minValue": {
+            "@id": "schema:minValue"
+          },
+          "name": {
+            "@id": "schema:name"
+          },
+          "offers": {
+            "@id": "schema:offers"
+          },
+          "price": {
+            "@id": "schema:price"
+          },
+          "priceCurrency": {
+            "@id": "schema:priceCurrency"
+          },
+          "priceValidUntil": {
+            "@id": "schema:priceValidUntil"
+          },
+          "ratingCount": {
+            "@id": "schema:ratingCount"
+          },
+          "ratingValue": {
+            "@id": "schema:ratingValue"
+          },
+          "returnFees": {
+            "@id": "schema:returnFees"
+          },
+          "returnMethod": {
+            "@id": "schema:returnMethod"
+          },
+          "returnPolicyCategory": {
+            "@id": "schema:returnPolicyCategory"
+          },
+          "review": {
+            "@id": "schema:review"
+          },
+          "reviewBody": {
+            "@id": "schema:reviewBody"
+          },
+          "reviewCount": {
+            "@id": "schema:reviewCount"
+          },
+          "reviewRating": {
+            "@id": "schema:reviewRating"
+          },
+          "seller": {
+            "@id": "schema:seller"
+          },
+          "shippingDestination": {
+            "@id": "schema:shippingDestination"
+          },
+          "shippingDetails": {
+            "@id": "schema:shippingDetails"
+          },
+          "shippingRate": {
+            "@id": "schema:shippingRate"
+          },
+          "sku": {
+            "@id": "schema:sku"
+          },
+          "transitTime": {
+            "@id": "schema:transitTime"
+          },
+          "type": "@type",
+          "unitCode": {
+            "@id": "schema:unitCode"
+          },
+          "url": {
+            "@id": "schema:url"
+          },
+          "value": {
+            "@id": "schema:value"
+          },
+          "width": {
+            "@id": "schema:width"
+          },
+          "worstRating": {
+            "@id": "schema:worstRating"
+          }
+        }
+      }
+    }
+  ]
+}
