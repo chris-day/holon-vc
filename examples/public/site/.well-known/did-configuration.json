@@ -1,0 +1,31 @@
+{
+  "linked_dids": [
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "urn:holon:context:1.0"
+      ],
+      "credentialSubject": {
+        "id": "did:web:issuer.example",
+        "origin": "https://issuer.example"
+      },
+      "id": "urn:uuid:f016898f-cede-471e-aa62-5a05ae3953ff",
+      "issuer": "did:web:issuer.example",
+      "proof": {
+        "created": "2026-09-27T21:24:12.290450251+00:00",
+        "cryptosuite": "eddsa-rdfc-2022",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "z27TmukbtTFzYqHqoGQdiSWsvK6G64q7JCK8PwzTEDniBMMzX5W4bNQ9FNemcndVUJHFvdagbtJ5veGVAxFwysLUq",
+        "type": "DataIntegrityProof",
+        "verificationMethod": "did:web:issuer.example#example-key"
+      },
+      "type": [
+        "VerifiableCredential",
+        "HolonDomainLinkageCredential"
+      ],
+      "validFrom": "2026-09-27T21:24:12.290400600+00:00",
+      "validUntil": "2026-09-28T21:24:12.290400600+00:00"
+    }
+  ],
+  "profile": "holon-vc2-domain-linkage-v1"
+}

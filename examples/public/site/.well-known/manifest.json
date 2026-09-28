@@ -1,0 +1,55 @@
+{
+  "artifacts": [
+    {
+      "cacheControl": "public, max-age=300, must-revalidate",
+      "fingerprint": "z6MkkSVQYnpxBDgqUfNRwJqd51P4e3HusnB8QGcKkz93qAw8",
+      "generatedAt": "2026-09-27T21:24:12.290400600+00:00",
+      "mediaType": "application/json",
+      "path": ".well-known/did-configuration.json",
+      "sha256": "46d010d45196ea8b1eedec26b7c42dd81864bbe6d2c9544dd65c6fffafd7a305",
+      "url": "https://issuer.example/.well-known/did-configuration.json"
+    },
+    {
+      "cacheControl": "public, max-age=300, must-revalidate",
+      "fingerprint": "z6MkkSVQYnpxBDgqUfNRwJqd51P4e3HusnB8QGcKkz93qAw8",
+      "generatedAt": "2026-09-27T21:24:12.290400600+00:00",
+      "mediaType": "application/did+ld+json",
+      "path": ".well-known/did.json",
+      "sha256": "1fa54eddf16fb6e656b541b96efcffa7e01f7b5fa7e08b338693d4803731d701",
+      "url": "https://issuer.example/.well-known/did.json"
+    },
+    {
+      "cacheControl": "public, max-age=300, must-revalidate",
+      "fingerprint": "z6MkkSVQYnpxBDgqUfNRwJqd51P4e3HusnB8QGcKkz93qAw8",
+      "generatedAt": "2026-09-27T21:24:12.290400600+00:00",
+      "mediaType": "application/json",
+      "path": ".well-known/holon-issuer.json",
+      "sha256": "87663ba742ba7b94489ec24cdce118e0e21d913c092e090776bb873baa32a3df",
+      "url": "https://issuer.example/.well-known/holon-issuer.json"
+    },
+    {
+      "cacheControl": "public, max-age=300, must-revalidate",
+      "fingerprint": "z6MkkSVQYnpxBDgqUfNRwJqd51P4e3HusnB8QGcKkz93qAw8",
+      "generatedAt": "2026-09-27T21:24:12.290400600+00:00",
+      "mediaType": "application/json",
+      "path": ".well-known/jwks.json",
+      "sha256": "d4331d90ba64f9ee84e83c1d2db36f8219456ecf899c50686ddea1acd738565e",
+      "url": "https://issuer.example/.well-known/jwks.json"
+    },
+    {
+      "cacheControl": "public, max-age=300, must-revalidate",
+      "fingerprint": "z6MkkSVQYnpxBDgqUfNRwJqd51P4e3HusnB8QGcKkz93qAw8",
+      "generatedAt": "2026-09-27T21:24:12.290400600+00:00",
+      "mediaType": "application/json",
+      "path": ".well-known/openid-credential-issuer",
+      "sha256": "40271803d9d2c2a66c04242f0ab2307e99e181401d62a7c352695dc4fcbe2571",
+      "url": "https://issuer.example/.well-known/openid-credential-issuer"
+    }
+  ],
+  "expires": "2026-09-28T21:24:12.290400600+00:00",
+  "fingerprint": "z6MkkSVQYnpxBDgqUfNRwJqd51P4e3HusnB8QGcKkz93qAw8",
+  "generatedAt": "2026-09-27T21:24:12.290400600+00:00",
+  "issuer": "did:web:issuer.example",
+  "origin": "https://issuer.example",
+  "profile": "holon-manifest-v1"
+}

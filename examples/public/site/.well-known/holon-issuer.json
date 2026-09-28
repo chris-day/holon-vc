@@ -1,0 +1,33 @@
+{
+  "credentialTypes": [
+    "HolonCredential"
+  ],
+  "cryptosuites": [
+    "eddsa-rdfc-2022"
+  ],
+  "didDocument": "https://issuer.example/.well-known/did.json",
+  "displayName": "Disposable public example (no live issuance service)",
+  "domainLinkageProfile": "holon-vc2-domain-linkage-v1",
+  "expires": "2026-09-28T21:24:12.290400600+00:00",
+  "generatedAt": "2026-09-27T21:24:12.290400600+00:00",
+  "issuer": "did:web:issuer.example",
+  "jwks": "https://issuer.example/.well-known/jwks.json",
+  "openidCredentialIssuer": "https://issuer.example/.well-known/openid-credential-issuer",
+  "profile": "holon-issuer-v1",
+  "schemas": [
+    {
+      "disclosure": "urn:holon:schema:1.0:disclosure",
+      "id": "urn:holon:schema:1.0",
+      "version": "1.0"
+    }
+  ],
+  "statusMechanisms": [
+    "BitstringStatusListEntry"
+  ],
+  "trustPolicy": {
+    "id": "unconfigured",
+    "minimumIndependentSources": 0,
+    "requiredEvidenceTypes": [],
+    "version": "1.0"
+  }
+}

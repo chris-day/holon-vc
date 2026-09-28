@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:holon:schema:publication:manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile",
+    "issuer",
+    "origin",
+    "generatedAt",
+    "expires",
+    "fingerprint",
+    "artifacts"
+  ],
+  "properties": {
+    "profile": {
+      "const": "holon-manifest-v1"
+    },
+    "issuer": {
+      "type": "string",
+      "format": "uri"
+    },
+    "origin": {
+      "type": "string",
+      "format": "uri"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "fingerprint": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "url",
+          "mediaType",
+          "sha256",
+          "generatedAt",
+          "fingerprint",
+          "cacheControl"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "mediaType": {
+            "enum": [
+              "application/json",
+              "application/did+ld+json"
+            ]
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "generatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fingerprint": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cacheControl": {
+            "const": "public, max-age=300, must-revalidate"
+          }
+        }
+      },
+      "minItems": 3,
+      "uniqueItems": true,
+      "maxItems": 16
+    }
+  }
+}

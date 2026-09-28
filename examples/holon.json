@@ -1,0 +1,10 @@
+{
+  "id":"urn:example:holon:temperature-1",
+  "type":"ExampleHolon",
+  "schemaVersion":"1.0",
+  "createdAt":"2026-01-01T00:00:00Z",
+  "claims":{"name":"Warehouse reading","value":21.4,"unit":"Cel","secret":"HIDDEN-CANARY-DO-NOT-DISCLOSE"},
+  "source":{"id":"urn:example:sensor:42","kind":"sensor"},
+  "evidence":[],
+  "relatedHolons":[]
+}

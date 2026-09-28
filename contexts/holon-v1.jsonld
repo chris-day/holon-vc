@@ -1,0 +1,49 @@
+{
+  "@context": {
+    "@protected": true,
+    "HolonCredential": "urn:holon:HolonCredential",
+    "ExampleHolon": "urn:holon:ExampleHolon",
+    "schemaVersion": "urn:holon:schemaVersion",
+    "claims": "urn:holon:claims",
+    "createdAt": {
+      "@id": "urn:holon:createdAt",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "observedAt": {
+      "@id": "urn:holon:observedAt",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "source": "urn:holon:source",
+    "kind": "urn:holon:kind",
+    "uri": {
+      "@id": "urn:holon:uri",
+      "@type": "@id"
+    },
+    "digest": "urn:holon:digest",
+    "claimPaths": "urn:holon:claimPaths",
+    "relatedHolons": "urn:holon:relatedHolons",
+    "relation": {
+      "@id": "urn:holon:relation",
+      "@type": "@id"
+    },
+    "value": "urn:holon:claim:value",
+    "unit": "urn:holon:claim:unit",
+    "secret": "urn:holon:claim:secret",
+    "DigestEvidence": "urn:holon:DigestEvidence",
+    "CredentialEvidence": "urn:holon:CredentialEvidence",
+    "HolonDomainLinkageCredential": "urn:holon:HolonDomainLinkageCredential",
+    "origin": {
+      "@id": "urn:holon:origin",
+      "@type": "@id"
+    },
+    "reissuedFrom": {
+      "@id": "urn:holon:reissuedFrom",
+      "@type": "@id"
+    },
+    "HolonSubjectSchema": "urn:holon:HolonSubjectSchema",
+    "evidence": {
+      "@id": "https://www.w3.org/2018/credentials#evidence",
+      "@type": "@id"
+    }
+  }
+}

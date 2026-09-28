@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:holon:schema:publication:jwks",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "keys"
+  ],
+  "properties": {
+    "keys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kid",
+          "kty",
+          "crv",
+          "x",
+          "alg",
+          "use"
+        ],
+        "properties": {
+          "kid": {
+            "type": "string",
+            "format": "uri"
+          },
+          "kty": {
+            "enum": [
+              "OKP",
+              "EC"
+            ]
+          },
+          "crv": {
+            "enum": [
+              "Ed25519",
+              "P-256"
+            ]
+          },
+          "x": {
+            "type": "string",
+            "minLength": 1
+          },
+          "y": {
+            "type": "string",
+            "minLength": 1
+          },
+          "alg": {
+            "enum": [
+              "EdDSA",
+              "ES256"
+            ]
+          },
+          "use": {
+            "const": "sig"
+          }
+        }
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  }
+}

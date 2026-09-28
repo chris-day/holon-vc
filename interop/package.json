@@ -1,0 +1,15 @@
+{
+  "name": "holon-vc-independent-interop",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@digitalbazaar/ecdsa-sd-2023-cryptosuite": "3.4.1",
+    "@digitalbazaar/eddsa-rdfc-2022-cryptosuite": "1.3.0",
+    "@digitalbazaar/ed25519-signature-2020": "5.4.0",
+    "@digitalbazaar/ecdsa-multikey": "1.8.0",
+    "@digitalbazaar/ed25519-multikey": "1.3.1",
+    "@digitalbazaar/data-integrity": "2.5.0",
+    "jsonld-signatures": "11.5.0",
+    "@digitalbazaar/ed25519-verification-key-2020": "4.2.0"
+  }
+}

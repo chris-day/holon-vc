@@ -1,0 +1,17 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"urn:holon:schema:issuer-metadata:1.0",
+ "title":"Application-specific Holon issuer metadata (not a W3C standard)",
+ "type":"object","additionalProperties":false,
+ "required":["profile","issuer","displayName","credentialTypes","schemas","cryptosuites","statusMechanisms","trustPolicy","didDocument","generatedAt","expires","domainLinkageProfile"],
+ "properties":{
+  "profile":{"const":"holon-issuer-v1"},"issuer":{"type":"string","pattern":"^did:web:"},"displayName":{"type":"string","minLength":1},
+  "credentialTypes":{"const":["HolonCredential"]},
+  "schemas":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["id","version","disclosure"],"properties":{"id":{"type":"string","format":"uri"},"version":{"const":"1.0"},"disclosure":{"type":"string","format":"uri"}}}},
+  "cryptosuites":{"type":"array","minItems":1,"uniqueItems":true,"items":{"enum":["eddsa-rdfc-2022","ecdsa-sd-2023"]}},
+  "statusMechanisms":{"const":["BitstringStatusListEntry"]},
+  "trustPolicy":{"type":"object","additionalProperties":false,"required":["id","version","requiredEvidenceTypes","minimumIndependentSources"],"properties":{"id":{"type":"string"},"version":{"const":"1.0"},"requiredEvidenceTypes":{"type":"array","items":{"type":"string"}},"minimumIndependentSources":{"type":"integer","minimum":0}}},
+  "didDocument":{"type":"string","format":"uri"},"jwks":{"type":"string","format":"uri"},"openidCredentialIssuer":{"type":"string","format":"uri"},
+  "generatedAt":{"type":"string","format":"date-time"},"expires":{"type":"string","format":"date-time"},"domainLinkageProfile":{"const":"holon-vc2-domain-linkage-v1"}
+ }
+}

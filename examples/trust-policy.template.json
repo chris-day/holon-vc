@@ -1,0 +1,11 @@
+{
+ "id":"issuer-policy","version":"1.0",
+ "issuer":"did:web:issuer.example",
+ "verificationMethod":"did:web:issuer.example#issuer",
+ "fingerprint":"REPLACE_WITH_THE_EXPORTED_MULTIBASE_FINGERPRINT",
+ "credentialTypes":["HolonCredential"],"schemas":["urn:holon:schema:1.0"],
+ "proofPurposes":["assertionMethod"],"cryptosuites":["eddsa-rdfc-2022"],
+ "maxAgeSeconds":86400,"requiredEvidenceTypes":[],"minimumIndependentSources":0,
+ "acceptedDomains":["https://issuer.example"],"offlineOnly":false,"requireStatus":true,
+ "enabled":true,"quarantineInstructions":true,"comparisons":[],"independentSources":{}
+}

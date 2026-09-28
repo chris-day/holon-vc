@@ -1,0 +1,28 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/multikey/v1"
+  ],
+  "assertionMethod": [
+    "did:web:issuer.example#example-key"
+  ],
+  "authentication": [
+    "did:web:issuer.example#example-key"
+  ],
+  "id": "did:web:issuer.example",
+  "service": [
+    {
+      "id": "did:web:issuer.example#holon-metadata",
+      "serviceEndpoint": "https://issuer.example/.well-known/holon-issuer.json",
+      "type": "HolonIssuerMetadata"
+    }
+  ],
+  "verificationMethod": [
+    {
+      "controller": "did:web:issuer.example",
+      "id": "did:web:issuer.example#example-key",
+      "publicKeyMultibase": "z6MkkSVQYnpxBDgqUfNRwJqd51P4e3HusnB8QGcKkz93qAw8",
+      "type": "Multikey"
+    }
+  ]
+}

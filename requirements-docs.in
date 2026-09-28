@@ -1,0 +1,2 @@
+# Direct documentation dependency. Resolved versions are in requirements-docs.txt.
+zensical==0.0.65

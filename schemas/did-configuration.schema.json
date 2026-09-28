@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:holon:schema:publication:did-configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile",
+    "linked_dids"
+  ],
+  "properties": {
+    "profile": {
+      "const": "holon-vc2-domain-linkage-v1"
+    },
+    "linked_dids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "@context",
+          "id",
+          "type",
+          "issuer",
+          "validFrom",
+          "validUntil",
+          "credentialSubject",
+          "proof"
+        ],
+        "properties": {
+          "@context": {
+            "const": [
+              "https://www.w3.org/ns/credentials/v2",
+              "urn:holon:context:1.0"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "format": "uri"
+          },
+          "type": {
+            "const": [
+              "VerifiableCredential",
+              "HolonDomainLinkageCredential"
+            ]
+          },
+          "issuer": {
+            "type": "string",
+            "format": "uri"
+          },
+          "validFrom": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "validUntil": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "credentialSubject": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "origin"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uri"
+              },
+              "origin": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          },
+          "proof": {
+            "type": "object",
+            "required": [
+              "type",
+              "cryptosuite",
+              "created",
+              "verificationMethod",
+              "proofPurpose",
+              "proofValue"
+            ]
+          }
+        }
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "maxItems": 1
+    }
+  }
+}

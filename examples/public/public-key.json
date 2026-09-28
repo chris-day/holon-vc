@@ -1,0 +1,13 @@
+{
+  "@context": [
+    "https://w3id.org/security/multikey/v1"
+  ],
+  "id": "did:web:issuer.example#example-key",
+  "controller": "did:web:issuer.example",
+  "type": "Multikey",
+  "publicKeyMultibase": "z6MkkSVQYnpxBDgqUfNRwJqd51P4e3HusnB8QGcKkz93qAw8",
+  "fingerprint": "z6MkkSVQYnpxBDgqUfNRwJqd51P4e3HusnB8QGcKkz93qAw8",
+  "created": "2026-09-27T21:24:12Z",
+  "status": "active",
+  "rotationHistory": []
+}

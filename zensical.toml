@@ -1,0 +1,75 @@
+[project]
+site_name = "Holon VC"
+site_description = "Architecture, examples, and operating guidance for verifiable Holon assertions."
+# Set site_url to the actual documentation URL when deploying this kit.
+repo_url = "https://github.com/chris-day/holon-vc"
+repo_name = "chris-day/holon-vc"
+docs_dir = "docs"
+site_dir = "site-docs"
+use_directory_urls = false
+dev_addr = "127.0.0.1:8000"
+extra_css = ["stylesheets/extra.css"]
+nav = [
+  { "Home" = "index.md" },
+  { "Guides" = [
+    { "Examples and walkthrough" = "EXAMPLES.md" },
+    { "Configuration" = "CONFIGURATION.md" },
+    { "Issuer deployment" = "DEPLOYMENT.md" },
+  ] },
+  { "Design" = [
+    { "Architecture" = "ARCHITECTURE.md" },
+    { "Standards and interoperability" = "STANDARDS.md" },
+    { "Threat model" = "THREAT_MODEL.md" },
+  ] },
+  { "Reference" = [
+    { "CLI commands" = "CLI.md" },
+    { "Requirements map" = "REQUIREMENTS.md" },
+  ] },
+  { "Contributing" = [
+    { "Documentation kit" = "DOCUMENTATION.md" },
+  ] },
+]
+
+[project.theme]
+custom_dir = "docs-overrides"
+language = "en"
+font = false
+features = [
+  "content.code.copy",
+  "navigation.sections",
+  "navigation.footer",
+  "navigation.top",
+  "search.highlight",
+  "toc.follow",
+]
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "teal"
+accent = "teal"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "teal"
+accent = "teal"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to light mode"
+
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+md_in_html = {}
+tables = {}
+toc.permalink = true
+pymdownx.details = {}
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.snippets.base_path = ["."]
+pymdownx.snippets.check_paths = true
+pymdownx.superfences.custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
