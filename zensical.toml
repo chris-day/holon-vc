@@ -1,7 +1,7 @@
 [project]
 site_name = "Holon VC"
 site_description = "Architecture, examples, and operating guidance for verifiable Holon assertions."
-# Set site_url to the actual documentation URL when deploying this kit.
+site_url = "https://chris-day.github.io/holon-vc/"
 repo_url = "https://github.com/chris-day/holon-vc"
 repo_name = "chris-day/holon-vc"
 docs_dir = "docs"

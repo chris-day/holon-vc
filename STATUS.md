@@ -139,3 +139,31 @@ Verification:
 No documentation deployment was performed. Set an actual `project.site_url` in
 `zensical.toml` before public deployment when canonical URLs/sitemap are needed.
 The kit uses no fabricated production URL. No Rust behavior was changed for this task.
+
+## GitHub Pages workflow — 2026-09-28
+
+Added `.github/workflows/docs.yml`: pull requests to `main` build the docs; pushes
+to `main` and manual runs on `main` build and deploy `site-docs/` using the official
+GitHub Pages actions. Python 3.14 installs `requirements-docs.txt` in a fresh `.venv`
+and runs the existing strict build helper. Deployment has separate Pages/OIDC
+permissions, a `github-pages` environment and serialized deployment concurrency.
+
+Set `project.site_url` to `https://chris-day.github.io/holon-vc/`, superseding the
+earlier unset-URL guidance. Documented the one-time Settings → Pages → GitHub
+Actions selection and manual run instructions in `docs/DOCUMENTATION.md`.
+
+Verification:
+
+- `bash scripts/docs.sh build`: PASS, exit 0; no issues found.
+- `.venv/bin/python -m pip check`: PASS, exit 0; no broken requirements.
+- Local YAML/structure checks: PASS; triggers, deployment gates, permissions,
+  dependency between jobs and artifact path checked. Embedded shell syntax passes
+  `bash -n`. This is local validation, not a GitHub-hosted workflow execution.
+- Generated canonical URL and sitemap: PASS; include the `/holon-vc/` project path.
+  The initial audit expected a directory-style homepage; corrected that assertion
+  to `index.html` to match the existing file-style URL configuration.
+- `git diff --check`: PASS.
+
+The workflow has not been pushed or run on GitHub, and repository Pages settings
+have not been changed. Remote publication requires committing/pushing these files
+and enabling GitHub Actions as the Pages source. No Rust behavior changed.

@@ -133,3 +133,12 @@ Clarifications made during implementation:
 - Added strict build/preview helpers and a separate `site-docs/` output directory.
 - Passed strict build, Python dependency check, generated-link/anchor audit,
   local preview smoke check, and the 52-operation executable workflow.
+
+## GitHub Pages follow-up — 2026-09-28
+
+- Add pull-request documentation builds and Pages deployment from `main`, with
+  a manual trigger, pinned Python dependencies and separate deployment permissions.
+- Set the project Pages URL and document the required repository Pages setting.
+- Acceptance: workflow structure and shell commands validate, the strict local
+  build and dependency check pass, and generated canonical URLs include `/holon-vc/`.
+- Remote execution remains verifiable after the workflow is pushed and Pages enabled.

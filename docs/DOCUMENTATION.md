@@ -57,8 +57,8 @@ runtime key, trust, status-registry or replay directories.
 ## Navigation and authoring
 
 Edit `zensical.toml` to change navigation, palette, extensions or the output directory.
-No production documentation URL is assumed. Set `project.site_url` to your actual
-public documentation URL before deploying if canonical URLs and a sitemap are needed.
+`project.site_url` is set to `https://chris-day.github.io/holon-vc/` for GitHub Pages
+canonical URLs and the sitemap. Update it if you use a custom domain or another host.
 
 The small `docs-overrides/404.html` template gives the missing-page screen a valid
 keyboard skip-link destination. Other pages use the bundled theme.
@@ -95,7 +95,26 @@ architecture, examples, CLI reference, standards and requirements pages together
 
 ## Publish the kit
 
-Copy the contents of `site-docs/` to your documentation web host after a successful
-strict build. Serve HTML as `text/html`, CSS as `text/css`, and JavaScript with the
-appropriate JavaScript content type. Keep its deployment separate from issuer
-identity/status publication. This kit does not enable automatic remote deployment.
+The `.github/workflows/docs.yml` workflow follows the official
+[Zensical publishing guidance](https://zensical.org/docs/publish-your-site/) and
+[GitHub Pages workflow guidance](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+It installs the pinned dependencies into a fresh Python 3.14 `.venv`, checks them,
+and runs the same clean, strict build used locally.
+
+Enable it once in the repository's **Settings → Pages → Build and deployment** by
+selecting **GitHub Actions** as the source. Commit and push the workflow and site
+sources to `main`. Successful pushes to `main` then publish `site-docs/` at
+**https://chris-day.github.io/holon-vc/**. You can also select **Actions →
+Documentation → Run workflow** on `main` to rebuild and deploy manually.
+
+Pull requests targeting `main` build the documentation without publishing. Manual
+runs on other branches also only build. The deployment job receives the Pages and
+OIDC permissions, waits for the build, and uses the `github-pages` environment;
+deployment runs are serialized. No personal access token or extra secret is needed.
+Repository environment protection rules still apply. The workflow does not enable
+Pages automatically; the repository setting above must be configured first.
+
+For another web host, copy the contents of `site-docs/` after a successful strict
+build. Serve HTML as `text/html`, CSS as `text/css`, and JavaScript with the
+appropriate JavaScript content type. Keep documentation deployment separate from
+issuer identity/status publication.
