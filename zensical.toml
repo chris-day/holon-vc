@@ -13,9 +13,11 @@ nav = [
   { "Home" = "index.md" },
   { "Guides" = [
     { "Examples and walkthrough" = "EXAMPLES.md" },
-    { "Product JSON-LD credential" = "PRODUCT_EXAMPLE.md" },
     { "Configuration" = "CONFIGURATION.md" },
     { "Issuer deployment" = "DEPLOYMENT.md" },
+  ] },
+  { "Further Examples" = [
+    { "GS1 Risotto Rice" = "Product-VC-example.md" },
   ] },
   { "Design" = [
     { "Architecture" = "ARCHITECTURE.md" },

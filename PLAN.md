@@ -166,3 +166,12 @@ Clarifications made during implementation:
   its named sections in the guide so the published commands are executable.
 - Validate the manual sequence, resource refresh, strict site build and rendered
   snippets. Add prerequisites, expected results, expiry guidance and troubleshooting.
+
+## Further Examples navigation — 2026-10-02
+
+- Consolidate the product walkthrough in `examples/product/Product-VC-example.md`.
+- Document every fixture, context, schema, reveal selection, shell section,
+  automated Python helper and integration-test entry point.
+- Include the source guide in the documentation site and expose it through
+  Further Examples → GS1 Risotto Rice; retain an old-page link for existing URLs.
+- Validate the strict build, rendered nested snippets, navigation and product test.

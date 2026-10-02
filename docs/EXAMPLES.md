@@ -5,7 +5,7 @@ signatures, status lists and disclosure proofs. `issuer.example` is an offline
 example identity, not a deployed service.
 
 For the supplied Schema.org/GS1 product record, see the
-[product JSON-LD credential example](PRODUCT_EXAMPLE.md). It preserves the product
+[GS1 Risotto Rice example](Product-VC-example.md). It preserves the product
 data, signs it with Ed25519 and P-256, and checks actual selective disclosure.
 
 ## Run the complete checked workflow

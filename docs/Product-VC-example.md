@@ -1,0 +1,1 @@
+--8<-- "examples/product/Product-VC-example.md"

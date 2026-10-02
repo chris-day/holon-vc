@@ -235,3 +235,24 @@ path filters. Every branch push builds; artifact upload and Pages deployment
 remain restricted to `main`. Local commits must be pushed to trigger GitHub.
 Validated YAML trigger/deployment conditions, strict documentation build and
 `git diff --check`: all passed. Remote execution has not been triggered here.
+
+## GS1 Risotto Rice documentation — 2026-10-02
+
+Inspected all files in `examples/product`, the automated Python runner and the
+Rust integration test. Expanded `Product-VC-example.md` into the authoritative
+example guide, preserving the full product and eight-step command walkthrough.
+Added a file-by-file code reference, full/disclosure schema differences and
+limits, exact reveal selection, context definitions, helper behavior and test
+coverage. The existing removed README was not recreated.
+
+`docs/Product-VC-example.md` includes that source directly. Zensical navigation
+now has Further Examples → GS1 Risotto Rice. The previous PRODUCT_EXAMPLE page
+links to the new page, and the general examples guide points to the new location.
+
+Validation: strict documentation build passed with no issues; generated HTML
+checks passed for the exact navigation labels/target, all example filenames,
+expanded nested snippets and the old-page link. Shell syntax and diff checks
+passed. No cryptographic implementation or example execution code changed.
+`cargo test --locked --test product_example`: exit 0, one test passed in 10.34s;
+all 17 real-cryptography CLI operations passed, including tamper rejection and
+selective disclosure.
