@@ -312,6 +312,63 @@ last command. A fresh directory prevents local pins from masking deployment
 failures. Expected result: exit 0. This checks identity artifacts; the credential
 verification below additionally checks the signed status lists.
 
+### Read a successful publication report
+
+The following is a successful `well-known validate` result, not a partially
+failed validation:
+
+```json
+{
+  "checks": [
+    {"code": "OK", "outcome": "passed", "stage": "publication"}
+  ],
+  "confidence": 0.5,
+  "cryptographicallyValid": true,
+  "decision": "authentic-assertion",
+  "errors": [],
+  "evidenceVerified": false,
+  "freshnessValid": true,
+  "holderAuthenticated": false,
+  "issuerAuthenticated": true,
+  "issuerTrustedForClaimType": false,
+  "policy": {
+    "confidenceModel": "ordinal-policy-score-not-probability",
+    "id": "holon-default",
+    "version": "1.0"
+  },
+  "reportVersion": "1.0",
+  "schemaValid": true,
+  "status": "unavailable",
+  "warnings": [
+    "Holon VC 2.0 domain linkage is an application profile, not the DIF VC 1.x linkage profile; it does not establish claim truth."
+  ]
+}
+```
+
+| Result | Meaning for this command |
+| --- | --- |
+| Publication `passed`, `errors: []`, exit 0 | The publication validation succeeded. |
+| `cryptographicallyValid: true` | The domain-linkage signature verifies; the publication's digest and consistency checks pass. |
+| `issuerAuthenticated: true` | The issuer's authorized linkage signer matches the independently supplied expected fingerprint. |
+| `freshnessValid: true` | The checked metadata and linkage credential pass validity checks. This does not prove the CDN holds the latest version or assess a product's status. |
+| `schemaValid: true` | Published identity artifacts satisfy the supported schemas. |
+| `decision: authentic-assertion` | The identity publication is authenticated; this is not a claim that product information is true. |
+| `issuerTrustedForClaimType: false` | This command does not establish a verifier's trust policy for particular product claims. |
+| `evidenceVerified: false` | Supporting product evidence is not assessed by this command. |
+| `holderAuthenticated: false` | No holder presentation is being authenticated. |
+| `status: unavailable` | Product credential revocation/suspension status is not evaluated here; this does not mean the deployed status URLs failed. |
+| `confidence: 0.5` | An ordinal policy score for this outcome, not a 50% probability of correctness. |
+
+The report uses a shared format across verification commands. Fields outside the
+scope of publication validation can remain false or unavailable even when this
+command succeeds. The domain-linkage warning describes the Holon VC2 application
+profile and its interoperability limits; it is not a validation failure.
+
+Once publication passes, continue to step 6 to issue and verify a credential.
+Remote `credential verify` additionally checks its signed status lists. A
+`trusted-assertion` outcome requires a matching verifier trust policy; it should
+not be inferred from successful publication validation alone.
+
 ### GitHub Pages media types and cache headers
 
 GitHub Pages can serve `did.json` as `application/json; charset=utf-8`.

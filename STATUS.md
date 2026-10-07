@@ -320,3 +320,11 @@ passed: 45 tests, including 52- and 17-operation workflows, with approved loopba
 access. The first full run exposed an unrelated random workflow challenge starting
 with '-' and parsed as a CLI option; switched that test nonce to 32 random bytes
 encoded as hex, preserving entropy. The rerun passed completely.
+
+## Publication report interpretation — 2026-10-07
+
+Added a complete successful well-known validation report and field-by-field
+interpretation to step 5 of GS1_PRODUCT_ISSUER.md. Clarified shared-report defaults,
+ordinal confidence, application-profile warning, issuer authentication versus
+claim trust, and the next credential/status verification step. Strict Zensical
+build and diff check passed. No runtime behavior changed.
