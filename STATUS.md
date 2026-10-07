@@ -290,3 +290,12 @@ public-tree copy, hidden-file upload, Pages setup, publishing-branch commit/push
 commands and the distinction between publication and signature renewal. The
 actual repository workflow was not changed. Strict docs build, embedded YAML
 structure and shell syntax checks, rendered guide check and diff check passed.
+
+## Issuer source versus generated website clarification — 2026-10-07
+
+Clarified step 4 of GS1_PRODUCT_ISSUER.md: commit issuer-public/ and workflow
+configuration, keep generated site/ ignored, and let GitHub Actions build, copy
+and deploy. Distinguished the signing machine's public site subtree from the
+website's generated output, removed the unnecessary local-build step, and added
+zensical.toml to the explicit staging example. Strict docs build and diff check
+passed. No target website files or workflows were modified.
