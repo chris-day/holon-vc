@@ -206,3 +206,14 @@ Clarifications made during implementation:
 - Validate synthetic and all four real products using RDF equivalence, actual
   temporary-key issuance/verification, immutable sources and schema constraints.
 - Document the helper under Further Examples and preserve the existing issuer state.
+
+## Product issuance preparation and publication instructions — 2026-10-07
+
+- Save the inline preparation step as a standard-library Python CLI that checks
+  current inputs against the reviewed profile, writes pinned configuration and
+  unsigned Holons, and refuses existing output directories.
+- Document all eight steps from retained profile to remote verification, including
+  HTML template download links and the target Pages workflow overlay.
+- Validate actual generated configuration/Holons through genuine temporary-key
+  Rust issuance and verification for synthetic and real product files; test stale
+  inputs and overwrite rejection, and build strict documentation.

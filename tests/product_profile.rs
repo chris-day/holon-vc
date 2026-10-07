@@ -50,29 +50,31 @@ async fn generated_profile_preserves_rdf_and_issues_each_product() {
             .success()
     );
     let report = read(&output.join("profile.json"));
-    let context_id = report["contextId"].as_str().unwrap();
     let schema_id = report["profileId"].as_str().unwrap();
     let context = read(&output.join("context.jsonld"));
     let full = read(&output.join("schema.json"));
-    f.app
-        .config
-        .contexts
-        .insert(context_id.into(), pin(&output.join("context.jsonld")));
+    let inputs = f.dir.path().join("inputs");
+    assert!(
+        std::process::Command::new("python3")
+            .arg("scripts/prepare_product_issuance.py")
+            .arg("--products-dir")
+            .arg(&source)
+            .arg("--profile-dir")
+            .arg(&output)
+            .arg("--output")
+            .arg(&inputs)
+            .status()
+            .unwrap()
+            .success()
+    );
+    let prepared: config::Config =
+        toml::from_str(&std::fs::read_to_string(inputs.join("product-config.toml")).unwrap())
+            .unwrap();
+    f.app.config.contexts.extend(prepared.contexts);
+    f.app.config.schemas.extend(prepared.schemas);
     f.app.config.contexts.insert(
         "https://schema.org".into(),
         pin(Path::new("contexts/vendor/schemaorg-2026-10-07.jsonld")),
-    );
-    f.app.config.schemas.insert(
-        schema_id.into(),
-        config::SchemaProfile {
-            full: output.join("schema.json"),
-            disclosure: output.join("disclosure.schema.json"),
-            context: context_id.into(),
-            sha256: storage::digest(&std::fs::read(output.join("schema.json")).unwrap()),
-            disclosure_sha256: storage::digest(
-                &std::fs::read(output.join("disclosure.schema.json")).unwrap(),
-            ),
-        },
     );
     let loader = holon_vc::jsonld::loader(&f.app).unwrap();
     for item in report["products"].as_array().unwrap() {
@@ -91,9 +93,12 @@ async fn generated_profile_preserves_rdf_and_issues_each_product() {
         );
         let mut product = original.clone();
         product.as_object_mut().unwrap().remove("@context");
-        let mut holon = Fixture::holon();
-        holon["type"] = json!("ProductHolon");
-        holon["claims"] = json!({"product":product});
+        let holon = read(
+            &inputs
+                .join("holons")
+                .join(format!("{}.json", item["gtin14"].as_str().unwrap())),
+        );
+        assert_eq!(holon["claims"]["product"], product);
         schemas::validate(&full, &holon).unwrap();
         for field in ["@id", "@type", "name", "gtin14"] {
             let mut bad = holon.clone();

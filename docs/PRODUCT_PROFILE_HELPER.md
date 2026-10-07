@@ -158,6 +158,9 @@ source, record its digest/provenance, regenerate profiles and rerun semantic tes
 
 ## Next: configure issuance
 
+Follow [Issue and publish the four product credentials](PRODUCT_ISSUANCE.md) for
+the repository preparation script, issuance commands, HTML page links and Pages deployment.
+
 Use the generated context ID and profile ID when creating the pinned
 [configuration](CONFIGURATION.md). Pin both schema variants under this profile
 ID. The schema's `credentialSchema` type remains `HolonSubjectSchema`.

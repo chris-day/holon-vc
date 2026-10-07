@@ -467,3 +467,10 @@ an old cached status list for a year.
 Back up private keys and the status registry. Use explicit key rotation rather
 than rerunning setup over an existing key. Publication should switch a complete
 public snapshot to avoid mismatched manifests during deployment.
+
+## Issue the website product credentials
+
+Once issuer setup and remote validation pass, follow
+[Issue and publish the four product credentials](PRODUCT_ISSUANCE.md). It uses the
+shared profile helper output, prepares unsigned Holons and pinned configuration,
+issues credentials, and integrates downloads into the product HTML templates.

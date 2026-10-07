@@ -361,3 +361,36 @@ No persistent issuer keys/status were used or changed; no website files were
 modified or deployed. Full Rust suite was not rerun because runtime Rust code did
 not change. Generated schemas describe observed structure, not GS1 business-rule
 conformance. Runtime pin configuration and batch issuance remain later steps.
+
+## Product issuance preparation and publication guide — 2026-10-07
+
+Added scripts/prepare_product_issuance.py and docs/PRODUCT_ISSUANCE.md. Step 2 now
+calls the repository script. It checks the regenerated profile and source hashes,
+produces one unsigned Holon per product and a local pinned TOML configuration,
+and refuses existing output directories. Context pins expire after 365 days;
+credential expiry remains an explicit issuance argument. No claims are invented.
+
+Added a Further Examples navigation entry and links from the profile helper and
+issuer guides. The eight-step guide covers existing-key reuse, status refresh,
+365-day credential issuance, public artifact staging, the four HTML templates,
+GitHub Pages overlay/deployment and remote verification. Schema identifier versus
+download URL, local pin requirements, full disclosure and authenticity versus
+claim truth are explicit. Optional embedded-VC automation is not implemented;
+HTML download-link instructions are provided.
+
+Verification (all exit 0):
+- python3 scripts/test_prepare_product_issuance.py: 3 tests passed.
+- python3 scripts/test_product_profile.py: 6 tests passed.
+- cargo test --locked --test product_profile: 1 test passed (four synthetic products).
+- GS1_PRODUCT_DIR=/var/software/gitrepos/chris-day/gs1-product/docs/products
+  cargo test --locked --test product_profile: 1 test passed (four real products).
+  These tests now consume the preparation script's actual TOML and Holons for
+  real signing/verification, preserving the original RDF-equivalence checks.
+- cargo fmt and cargo clippy --locked --all-targets --all-features -- -D warnings:
+  passed; existing read-only dependency-cache diagnostics were nonfatal.
+- bash scripts/docs.sh build: passed, no issues found.
+- Script --help, seven documented Bash blocks checked with bash -n, and
+  git diff --check: passed.
+
+No persistent issuer data or target website files were modified; no deployment
+was performed. Production signing/publication commands remain operator steps.

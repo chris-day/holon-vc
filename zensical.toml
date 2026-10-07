@@ -19,6 +19,7 @@ nav = [
   ] },
   { "Further Examples" = [
     { "Shared product profile helper" = "PRODUCT_PROFILE_HELPER.md" },
+    { "Issue and publish product credentials" = "PRODUCT_ISSUANCE.md" },
     { "GS1 Risotto Rice" = "Product-VC-example.md" },
   ] },
   { "Design" = [
