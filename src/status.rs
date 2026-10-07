@@ -99,7 +99,7 @@ async fn refresh(
             ))?)
         );
         let url = format!("{}/{}.json", r.url, purpose);
-        let doc = json!({"@context":["https://www.w3.org/ns/credentials/v2"],"id":url,"type":["VerifiableCredential","BitstringStatusListCredential"],"issuer":r.issuer,"validFrom":now.to_rfc3339(),"validUntil":(now+chrono::Duration::days(1)).to_rfc3339(),"credentialSubject":{"id":format!("{url}#list"),"type":"BitstringStatusList","statusPurpose":purpose,"encodedList":encoded}});
+        let doc = json!({"@context":["https://www.w3.org/ns/credentials/v2"],"id":url,"type":["VerifiableCredential","BitstringStatusListCredential"],"issuer":r.issuer,"validFrom":now.to_rfc3339(),"validUntil":(now+chrono::Duration::days(365)).to_rfc3339(),"credentialSubject":{"id":format!("{url}#list"),"type":"BitstringStatusList","statusPurpose":purpose,"encodedList":encoded}});
         let signed =
             suites::sign(&doc, key, &verification::proof(s, None, None), &[], &loader).await?;
         suites::verify(&signed, &key.public(), &loader).await?;

@@ -30,6 +30,10 @@ async fn origin_and_path_publications_validate() {
         )
         .await
         .unwrap();
+        let manifest = &docs[".well-known/manifest.json"];
+        let from = holon_vc::models::date(manifest["generatedAt"].as_str().unwrap()).unwrap();
+        let until = holon_vc::models::date(manifest["expires"].as_str().unwrap()).unwrap();
+        assert_eq!(until - from, chrono::Duration::days(365));
         let dir = f.app.root.join("publication/.well-known");
         well_known::publish(&f.app, &dir, &docs, false).unwrap();
         let loaded = well_known::load_set(&f.app, "https://issuer.example", did, Some(&dir))

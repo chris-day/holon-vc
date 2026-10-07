@@ -1,7 +1,7 @@
 [project]
-site_name = "Holon VC"
+site_name = "Holon VC Development"
 site_description = "Architecture, examples, and operating guidance for verifiable Holon assertions."
-site_url = "https://chris-day.github.io/holon-vc/"
+site_url = "https://starlord.perdl.com/"
 repo_url = "https://github.com/chris-day/holon-vc"
 repo_name = "chris-day/holon-vc"
 docs_dir = "docs"
@@ -15,7 +15,6 @@ nav = [
     { "Examples and walkthrough" = "EXAMPLES.md" },
     { "Configuration" = "CONFIGURATION.md" },
     { "Issuer deployment" = "DEPLOYMENT.md" },
-    { "GS1 Product issuer setup" = "GS1_PRODUCT_ISSUER.md" },
   ] },
   { "Further Examples" = [
     { "GS1 Risotto Rice" = "Product-VC-example.md" },

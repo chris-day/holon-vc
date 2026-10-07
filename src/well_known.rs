@@ -251,7 +251,7 @@ pub async fn build(app: &App, g: Generate<'_>) -> Result<BTreeMap<String, Value>
         ));
     }
     let now = chrono::Utc::now();
-    let until = now + chrono::Duration::days(1);
+    let until = now + chrono::Duration::days(365);
     let linkage = json!({"@context":["https://www.w3.org/ns/credentials/v2",crate::jsonld::HOLON_CONTEXT],"id":format!("urn:uuid:{}",uuid::Uuid::new_v4()),"type":["VerifiableCredential","HolonDomainLinkageCredential"],"issuer":g.issuer,"validFrom":now.to_rfc3339(),"validUntil":until.to_rfc3339(),"credentialSubject":{"id":g.issuer,"origin":base}});
     let signed = suites::sign(
         &linkage,
@@ -552,7 +552,7 @@ fn fresh(v: &Value) -> Result<()> {
     if from > now + chrono::Duration::seconds(30)
         || until <= now
         || until <= from
-        || until > from + chrono::Duration::days(1)
+        || until > from + chrono::Duration::days(365)
     {
         return Err(error(
             "STALE_METADATA",
@@ -763,5 +763,26 @@ pub async fn run(app: &mut App, action: &str, m: &clap::ArgMatches) -> Result<Va
             "cli",
             "Unknown publication command",
         )),
+    }
+}
+
+#[cfg(test)]
+mod validity_tests {
+    #[test]
+    fn metadata_accepts_one_year_but_rejects_longer_or_expired_windows() {
+        let now = chrono::Utc::now();
+        let document = |from: chrono::DateTime<chrono::Utc>,
+                        until: chrono::DateTime<chrono::Utc>| {
+            serde_json::json!({"generatedAt": from.to_rfc3339(), "expires": until.to_rfc3339()})
+        };
+        assert!(super::fresh(&document(now, now + chrono::Duration::days(365))).is_ok());
+        assert!(super::fresh(&document(now, now + chrono::Duration::days(366))).is_err());
+        assert!(
+            super::fresh(&document(
+                now - chrono::Duration::days(365),
+                now - chrono::Duration::seconds(1)
+            ))
+            .is_err()
+        );
     }
 }

@@ -38,6 +38,11 @@ async fn status_transitions_and_bit_order() {
         "revoked"
     );
     let r = status::load(&f.status).unwrap();
+    for list in r.lists.values() {
+        let from = holon_vc::models::date(list["validFrom"].as_str().unwrap()).unwrap();
+        let until = holon_vc::models::date(list["validUntil"].as_str().unwrap()).unwrap();
+        assert_eq!(until - from, chrono::Duration::days(365));
+    }
     let s = r.lists["revocation"]["credentialSubject"]["encodedList"]
         .as_str()
         .unwrap();

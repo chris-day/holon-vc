@@ -41,7 +41,7 @@ creates trust.
 Refresh signed status lists with `status create --force` using the same ID, URL,
 issuer and registry. Existing revocations/allocations are retained. Republish at
 least every five minutes when using default offline pins and cache settings.
-Metadata expires after one day and generated pins after five minutes; regenerate
+Metadata and signed status credentials expire after 365 days and generated pins after five minutes; regenerate
 metadata and refresh pins when required. Do not extend an expiry to bypass stale
 content. Revocation has bounded cache latency, not instantaneous global visibility.
 

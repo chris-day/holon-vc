@@ -175,3 +175,13 @@ Clarifications made during implementation:
 - Include the source guide in the documentation site and expose it through
   Further Examples → GS1 Risotto Rice; retain an old-page link for existing URLs.
 - Validate the strict build, rendered nested snippets, navigation and product test.
+
+## One-year issuer validity and deployment guide — 2026-10-07
+
+- Generate issuer metadata, domain-linkage credentials and signed status lists
+  with a fixed 365-day validity window; update metadata's maximum accepted window.
+- Preserve five-minute local pins/status freshness and explicit credential expiry.
+- Add the gs1-product.perdl.com setup guide and navigation with private key setup,
+  Zensical post-build publication, HTTPS verification, issuance and renewal.
+- Verify generated lifetimes, validity rejection boundaries, cache freshness,
+  complete Rust suite, release build, Clippy, formatting and documentation build.

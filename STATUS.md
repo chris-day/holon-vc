@@ -256,3 +256,29 @@ passed. No cryptographic implementation or example execution code changed.
 `cargo test --locked --test product_example`: exit 0, one test passed in 10.34s;
 all 17 real-cryptography CLI operations passed, including tamper rejection and
 selective disclosure.
+
+## One-year issuer validity and GS1 Product how-to — 2026-10-07
+
+Changed newly generated metadata, manifest, domain-linkage credential and signed
+status-list validity to 365 days. Updated metadata validation's upper bound to
+match. Existing signed artifacts must be regenerated; no existing signatures or
+expiry values are rewritten. Five-minute pins/status freshness remain enforced.
+Product example credential/context lifetimes remain explicitly one day, and the
+new issuer how-to demonstrates issuing a credential with an explicit 365-day expiry.
+
+Added `docs/GS1_PRODUCT_ISSUER.md` under Guides → GS1 Product issuer setup, covering
+persistent private storage, both keys/suites, local validation, post-build Zensical
+publication, hidden-file handling for Pages, online verification, issuance and
+renewal. No remote deployment or changes to hosting settings were performed.
+Preserved the user's existing dev_addr and zensical.local.toml changes.
+
+Validation: focused validity/status tests passed, including 365-day generation,
+rejection of longer/expired metadata and stale-cache rejection. Formatting,
+Clippy with warnings denied, strict docs build, shell syntax of guide blocks,
+rendered page checks, release build (58.72s), CLI help and diff checks passed.
+The initial full test run hit the sandbox's loopback bind restriction; rerun
+with approved local socket access was requested. Dependency-cache read-only
+messages were nonfatal.
+Final `cargo test --locked --all-features` rerun: exit 0, 44 tests passed,
+including both documented workflows (52 and 17 CLI operations) and the live
+loopback resolver checks. No test failures remain.
