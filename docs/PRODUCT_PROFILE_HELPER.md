@@ -51,6 +51,98 @@ exact input file hashes appear in `profile.json`.
 This step prepares the profile only. It does not generate issuer keys, sign
 credentials, create runtime pins, publish the files or edit the target website.
 
+## Incorporate generated files into the repository
+
+Generating into `/tmp/gs1-product-profile-v1` does **not** replace the checked-in
+files under `profiles/gs1-product-v1/`. The new directory lets you review changes
+before incorporating them. Run the following commands from the `holon-vc`
+repository, adjusting `GENERATED_PROFILE` if you used another output directory.
+
+### Review the changes and choose the profile version
+
+```bash
+GENERATED_PROFILE='/tmp/gs1-product-profile-v1'
+REPO_PROFILE="$PWD/profiles/gs1-product-v1"
+
+git status --short -- profiles/gs1-product-v1/
+# Accept diff's expected exit code 1, but propagate errors (exit code > 1).
+diff -ru "$REPO_PROFILE" "$GENERATED_PROFILE" || {
+  diff_status=$?
+  if [ "$diff_status" -ne 1 ]; then exit "$diff_status"; fi
+}
+```
+
+Review any existing local edits before copying over them. `diff` exits with code
+1 when differences exist; the block above handles that even with `set -e` enabled.
+
+**Preserve profiles already used by issued credentials.** If regeneration changes
+context meanings or schema constraints, generate a new version with new profile
+and context identifiers, retain the old definitions, and use a new repository
+directory such as `profiles/gs1-product-v2/`. Update the issuance configuration and
+publication paths to match that version. Do not overwrite published `v1`
+definitions while existing credentials depend on them.
+
+An inventory-only update to `profile.json` does not change context or schema pins.
+Even formatting-only changes to context/schema files change their exact-byte
+hashes, so review those changes and their effect on configured pins too.
+
+### Copy the reviewed files
+
+For an update appropriate for the existing `v1` directory, copy all five artifacts:
+
+```bash
+for file in context.jsonld schema.json disclosure.schema.json profile.json NOTICE.txt
+do
+  cp "$GENERATED_PROFILE/$file" "$REPO_PROFILE/$file"
+done
+
+git diff -- profiles/gs1-product-v1/
+```
+
+Keep `NOTICE.txt` with the context mappings. Copying files here does not sign new
+credentials or alter the original product sidecars.
+
+### Validate the incorporated profile
+
+```bash
+python3 scripts/test_product_profile.py
+
+GS1_PRODUCT_DIR='/var/software/gitrepos/chris-day/gs1-product/docs/products' \
+  cargo test --locked --test product_profile
+
+# This output directory must not already exist; choose a new name on later runs.
+python3 scripts/prepare_product_issuance.py \
+  --products-dir /var/software/gitrepos/chris-day/gs1-product/docs/products \
+  --profile-dir "$REPO_PROFILE" \
+  --output /tmp/gs1-product-profile-validation-v1
+```
+
+The Rust test checks semantic preservation and real signing/verification with
+temporary keys. The preparation command explicitly checks that the **incorporated
+repository profile** matches the current products and generates disposable unsigned
+Holons and pinned configuration. It neither uses your issuer key nor deploys files.
+If validation fails, repair the mismatch before committing or issuing credentials.
+
+### Commit and propagate deliberately
+
+```bash
+git add profiles/gs1-product-v1/
+git diff --cached --stat
+git commit -m "Update shared product profile from current product sources"
+git push
+```
+
+Review staged changes before committing. If there are no differences, no new
+commit is needed.
+
+Updating the repository does **not** update the retained profile under
+`$ISSUER_DATA/profiles/`, its pinned configuration, or the deployed website.
+Follow [Issue and publish the four product credentials](PRODUCT_ISSUANCE.md) to
+retain the chosen profile, prepare a new configuration and unsigned Holons, issue
+credentials, and publish the public files. Preserve any older retained profile
+needed to verify existing credentials; do not overwrite it as an incidental part
+of this copy step.
+
 ## Mapping and preservation rules
 
 Inputs currently require a single Schema.org context URL (`http` or `https`,

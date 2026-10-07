@@ -394,3 +394,15 @@ Verification (all exit 0):
 
 No persistent issuer data or target website files were modified; no deployment
 was performed. Production signing/publication commands remain operator steps.
+
+## Incorporating generated product profiles — 2026-10-07
+
+Expanded the shared product profile guide with review/diff, copying the five
+artifacts into profiles/gs1-product-v1/, validation of the incorporated profile,
+and git commands. Explained published-version preservation, inventory-only versus
+context/schema changes, exact-byte pins, and the separate issuer-data and website
+publication steps. The diff example handles expected differences under set -e.
+
+Documentation-only validation: strict Zensical build passed with no issues,
+all seven Bash blocks passed bash -n, and git diff --check passed. No generated
+profiles, issuer data or target website files were changed.
