@@ -282,3 +282,11 @@ messages were nonfatal.
 Final `cargo test --locked --all-features` rerun: exit 0, 44 tests passed,
 including both documented workflows (52 and 17 CLI operations) and the live
 loopback resolver checks. No test failures remain.
+
+## Standard Zensical Pages workflow clarification — 2026-10-07
+
+Expanded GS1_PRODUCT_ISSUER.md with the complete target-site docs.yml, post-build
+public-tree copy, hidden-file upload, Pages setup, publishing-branch commit/push
+commands and the distinction between publication and signature renewal. The
+actual repository workflow was not changed. Strict docs build, embedded YAML
+structure and shell syntax checks, rendered guide check and diff check passed.
