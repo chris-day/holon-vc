@@ -644,6 +644,7 @@ pub async fn load_set(
         crate::resolvers::json(app, &format!("{base}/.well-known/manifest.json")).await?
     };
     let mut out = BTreeMap::new();
+    let did_url = crate::did::web_url(issuer)?;
     let entries = manifest["artifacts"]
         .as_array()
         .filter(|a| a.len() <= 16)
@@ -672,12 +673,17 @@ pub async fn load_set(
                 false,
             )?
         } else {
-            crate::resolvers::retrieve(
-                app,
-                verification::string(e, "url")?,
-                &[verification::string(e, "mediaType")?],
-            )
-            .await?
+            let address = verification::string(e, "url")?;
+            let declared_media = verification::string(e, "mediaType")?;
+            // did:web permits did.json to be served as application/json by
+            // static hosts. This changes transport acceptance only: the exact
+            // manifest digest and DID/publication validation still apply.
+            let accepted = if address == did_url && declared_media == "application/did+ld+json" {
+                vec![declared_media, "application/json"]
+            } else {
+                vec![declared_media]
+            };
+            crate::resolvers::retrieve(app, address, &accepted).await?
         };
         if storage::digest(&bytes) != verification::string(e, "sha256")? {
             return Err(error(

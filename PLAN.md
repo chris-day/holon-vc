@@ -185,3 +185,12 @@ Clarifications made during implementation:
   Zensical post-build publication, HTTPS verification, issuance and renewal.
 - Verify generated lifetimes, validity rejection boundaries, cache freshness,
   complete Rust suite, release build, Clippy, formatting and documentation build.
+
+## GitHub Pages DID media-type compatibility — 2026-10-07
+
+- Accept application/json transport for the issuer's exact did:web document when
+  its manifest declares application/did+ld+json, as permitted by did:web.
+- Preserve exact-byte digests, publication shape, key authorization and signatures;
+  continue rejecting HTML and altered documents.
+- Document the root cause, rebuild/retry commands and separate 600-second CDN
+  caching limitation. Validate publication regression tests and the full suite.

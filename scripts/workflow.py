@@ -40,7 +40,7 @@ for name,suite,extra in [('holon','issuer',[]),('selective','sd',[]),('legacy','
     assert report['decision']=='trusted-assertion' and report['status']=='active'
 run('presentation','create','--credential',output('holon.vc.json'),'--output',output('unsigned.vp.json'))
 r=run('presentation','verify','--presentation',output('unsigned.vp.json'));assert not r['holderAuthenticated']
-challenge=secrets.token_urlsafe(32)
+challenge=secrets.token_hex(32)  # Cannot begin with a CLI option prefix.
 run('presentation','create','--credential',output('holon.vc.json'),'--holder',issuer,'--suite','holder','--challenge',challenge,'--domain','verifier.example','--sign','--output',output('signed.vp.json'),secret=True)
 r=run('presentation','verify','--presentation',output('signed.vp.json'),'--challenge',challenge,'--domain','verifier.example');assert r['holderAuthenticated']
 r=run('presentation','verify','--presentation',output('signed.vp.json'),'--challenge',challenge,'--domain','verifier.example',expected=5);assert 'REPLAYED' in r['errors']

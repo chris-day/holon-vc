@@ -299,3 +299,24 @@ and deploy. Distinguished the signing machine's public site subtree from the
 website's generated output, removed the unnecessary local-build step, and added
 zensical.toml to the explicit staging example. Strict docs build and diff check
 passed. No target website files or workflows were modified.
+
+## GitHub Pages application/json DID transport — 2026-10-07
+
+Diagnosed MEDIA_TYPE before signature verification: publication loading required
+exact agreement with the manifest's application/did+ld+json type, while Pages
+served application/json; charset=utf-8. The charset parameter was already parsed
+correctly. Added narrowly scoped application/json acceptance for the exact issuer
+DID URL, retaining manifest-declared representation, byte digests, schemas,
+authorization and signatures. This follows did:web document handling rules.
+
+Regression tests cover valid generic JSON transport, rejected HTML and altered
+bytes with a refreshed resource pin but unchanged manifest digest. Updated the
+issuer how-to with recovery commands and the separate observed max-age=600 cache
+limitation. No remote issuer validation or remote content changes were performed.
+
+Validation: cargo fmt/check, Clippy with -D warnings, strict docs build and diff
+check passed. Release build passed (57.11s). Full cargo test --locked --all-features
+passed: 45 tests, including 52- and 17-operation workflows, with approved loopback
+access. The first full run exposed an unrelated random workflow challenge starting
+with '-' and parsed as a CLI option; switched that test nonce to 32 random bytes
+encoded as hex, preserving entropy. The rerun passed completely.

@@ -60,3 +60,56 @@ async fn origin_and_path_publications_validate() {
         assert!(well_known::publish(&f.app, &dir, &docs, false).is_err());
     }
 }
+
+#[tokio::test]
+async fn static_host_json_did_preserves_digest_and_media_checks() {
+    let f = Fixture::new().await;
+    let docs = well_known::build(
+        &f.app,
+        Generate {
+            origin: "https://issuer.example",
+            issuer: &f.suite.controller,
+            suite: &f.suite,
+            key: &f.key,
+            public_keys: vec![PublicDocument::new(&f.key, "issuer", &f.suite.controller)],
+            policy: None,
+            display_name: "Static host",
+            jwks: true,
+            openid: false,
+        },
+    )
+    .await
+    .unwrap();
+    let dir = f.app.root.join("publication/.well-known");
+    well_known::publish(&f.app, &dir, &docs, false).unwrap();
+    let did_url = "https://issuer.example/.well-known/did.json";
+    let did_path = dir.join("did.json");
+    holon_vc::resolvers::pin(&f.app, did_url, &did_path, "application/json", 300).unwrap();
+    let loaded = well_known::load_set(&f.app, "https://issuer.example", &f.suite.controller, None)
+        .await
+        .unwrap();
+    well_known::validate_set(
+        &f.app,
+        "https://issuer.example",
+        &f.suite.controller,
+        &f.suite.fingerprint,
+        &loaded,
+    )
+    .await
+    .unwrap();
+
+    holon_vc::resolvers::pin(&f.app, did_url, &did_path, "text/html", 300).unwrap();
+    let error = well_known::load_set(&f.app, "https://issuer.example", &f.suite.controller, None)
+        .await
+        .unwrap_err();
+    assert_eq!(error.code, "MEDIA_TYPE");
+
+    let mut altered = docs[".well-known/did.json"].clone();
+    altered["id"] = "did:web:other.example".into();
+    holon_vc::storage::write_json(&did_path, &altered, false, true).unwrap();
+    holon_vc::resolvers::pin(&f.app, did_url, &did_path, "application/json", 300).unwrap();
+    let error = well_known::load_set(&f.app, "https://issuer.example", &f.suite.controller, None)
+        .await
+        .unwrap_err();
+    assert_eq!(error.code, "DIGEST_MISMATCH");
+}

@@ -15,7 +15,7 @@ No command here publishes data to a remote server.
 
 | Resource | Content-Type | Recommended cache |
 |---|---|---|
-| DID document | application/did+ld+json | public, max-age=300, must-revalidate |
+| DID document | application/did+ld+json (application/json transport also accepted for did:web) | public, max-age=300, must-revalidate |
 | Discovery, JWKS, manifest, OpenID metadata | application/json | public, max-age=300, must-revalidate |
 | Signed status credentials | application/vc | public, max-age=300, must-revalidate |
 | Public VC/VP files, if intentionally published | application/vc / application/vp | private/no-store as appropriate |

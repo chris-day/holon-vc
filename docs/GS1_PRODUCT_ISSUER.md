@@ -312,6 +312,42 @@ last command. A fresh directory prevents local pins from masking deployment
 failures. Expected result: exit 0. This checks identity artifacts; the credential
 verification below additionally checks the signed status lists.
 
+### GitHub Pages media types and cache headers
+
+GitHub Pages can serve `did.json` as `application/json; charset=utf-8`.
+That is compatible with did:web. The manifest still describes the document as
+`application/did+ld+json`; publication validation accepts the generic JSON
+transport type specifically for the issuer's resolved DID document and still
+checks its exact manifest digest, structure, authorization and signatures.
+See the [did:web document handling rules](https://w3c-ccg.github.io/did-method-web/#key-material-and-document-handling).
+
+If all seven HTTP requests return 200 but `well-known validate` reports
+`MEDIA_TYPE`, an older binary may still require the DID-specific HTTP type.
+Rebuild the updated checkout and retry with a fresh verifier directory:
+
+```bash
+cd "$HOLON_REPO"
+cargo build --locked --release
+REMOTE_CHECK="$(mktemp -d /tmp/gs1-product-check.XXXXXX)"
+"$HOLON_BIN" --data-dir "$REMOTE_CHECK" --output-format json \
+  well-known validate \
+  --origin "$ISSUER_ORIGIN" --issuer-did "$ISSUER_DID" \
+  --expected-fingerprint "$ISSUER_FINGERPRINT"
+```
+
+Do not edit the manifest's `mediaType` or signed files to bypass this error.
+This compatibility fix only requires an updated verifier binary; it does not
+require regenerating issuer artifacts or redeploying otherwise valid files.
+`charset=utf-8` is already handled by the HTTP parser. `Vary: Accept-Encoding`
+alone does not mean the response is compressed; `Content-Encoding` indicates
+that. HTTP 200 establishes reachability, not cryptographic validity.
+
+A response with `Cache-Control: max-age=600` advertises ten-minute caching,
+longer than this project's recommended 300 seconds. This is separate from the
+media-type error: fresh local pins do not guarantee fresh CDN content. Account
+for that propagation delay when publishing revocations; do not claim five-minute
+end-to-end freshness on a host serving ten-minute cached responses.
+
 ## 6. Issue a one-year smoke-test credential
 
 Return to the Rust repository. If more than five minutes have elapsed since
