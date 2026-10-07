@@ -1,0 +1,161 @@
+{
+  "@context": [
+    "urn:holon:context:1.0",
+    {
+      "ProductHolon": "https://gs1-product.perdl.com/schemas/product-holon-v1#ProductHolon",
+      "product": {
+        "@id": "https://gs1-product.perdl.com/schemas/product-holon-v1#product",
+        "@context": {
+          "Brand": {
+            "@id": "schema:Brand"
+          },
+          "DefinedRegion": {
+            "@id": "schema:DefinedRegion"
+          },
+          "MerchantReturnPolicy": {
+            "@id": "schema:MerchantReturnPolicy"
+          },
+          "MonetaryAmount": {
+            "@id": "schema:MonetaryAmount"
+          },
+          "Offer": {
+            "@id": "schema:Offer"
+          },
+          "OfferShippingDetails": {
+            "@id": "schema:OfferShippingDetails"
+          },
+          "Organization": {
+            "@id": "schema:Organization"
+          },
+          "Product": {
+            "@id": "schema:Product"
+          },
+          "PropertyValue": {
+            "@id": "schema:PropertyValue"
+          },
+          "QuantitativeValue": {
+            "@id": "schema:QuantitativeValue"
+          },
+          "ShippingDeliveryTime": {
+            "@id": "schema:ShippingDeliveryTime"
+          },
+          "additionalProperty": {
+            "@id": "schema:additionalProperty"
+          },
+          "addressCountry": {
+            "@id": "schema:addressCountry"
+          },
+          "applicableCountry": {
+            "@id": "schema:applicableCountry"
+          },
+          "availability": {
+            "@id": "schema:availability"
+          },
+          "brand": {
+            "@id": "schema:brand"
+          },
+          "category": {
+            "@id": "schema:category"
+          },
+          "color": {
+            "@id": "schema:color"
+          },
+          "currency": {
+            "@id": "schema:currency"
+          },
+          "deliveryTime": {
+            "@id": "schema:deliveryTime"
+          },
+          "depth": {
+            "@id": "schema:depth"
+          },
+          "description": {
+            "@id": "schema:description"
+          },
+          "gtin14": {
+            "@id": "schema:gtin14"
+          },
+          "handlingTime": {
+            "@id": "schema:handlingTime"
+          },
+          "hasMerchantReturnPolicy": {
+            "@id": "schema:hasMerchantReturnPolicy"
+          },
+          "height": {
+            "@id": "schema:height"
+          },
+          "image": {
+            "@id": "schema:image"
+          },
+          "itemCondition": {
+            "@id": "schema:itemCondition"
+          },
+          "maxValue": {
+            "@id": "schema:maxValue"
+          },
+          "minValue": {
+            "@id": "schema:minValue"
+          },
+          "model": {
+            "@id": "schema:model"
+          },
+          "mpn": {
+            "@id": "schema:mpn"
+          },
+          "name": {
+            "@id": "schema:name"
+          },
+          "offers": {
+            "@id": "schema:offers"
+          },
+          "price": {
+            "@id": "schema:price"
+          },
+          "priceCurrency": {
+            "@id": "schema:priceCurrency"
+          },
+          "priceValidUntil": {
+            "@id": "schema:priceValidUntil"
+          },
+          "returnPolicyCategory": {
+            "@id": "schema:returnPolicyCategory"
+          },
+          "schema": "http://schema.org/",
+          "seller": {
+            "@id": "schema:seller"
+          },
+          "shippingDestination": {
+            "@id": "schema:shippingDestination"
+          },
+          "shippingDetails": {
+            "@id": "schema:shippingDetails"
+          },
+          "shippingRate": {
+            "@id": "schema:shippingRate"
+          },
+          "sku": {
+            "@id": "schema:sku"
+          },
+          "transitTime": {
+            "@id": "schema:transitTime"
+          },
+          "unitCode": {
+            "@id": "schema:unitCode"
+          },
+          "url": {
+            "@id": "schema:url"
+          },
+          "value": {
+            "@id": "schema:value"
+          },
+          "weight": {
+            "@id": "schema:weight"
+          },
+          "width": {
+            "@id": "schema:width"
+          }
+        }
+      }
+    }
+  ]
+}

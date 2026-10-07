@@ -29,3 +29,6 @@ holon-vc-data/
 
 # Codex session
 helper.txt
+
+# Python helper bytecode
+__pycache__/

@@ -328,3 +328,36 @@ interpretation to step 5 of GS1_PRODUCT_ISSUER.md. Clarified shared-report defau
 ordinal confidence, application-profile warning, issuer authentication versus
 claim trust, and the next credential/status verification step. Strict Zensical
 build and diff check passed. No runtime behavior changed.
+
+## Shared four-product profile helper — 2026-10-07
+
+Added reusable build_product_profile() and CLI in scripts/product_profile.py.
+It recursively reads product.jsonld sidecars, preserves observed value types,
+requires core product identity/name/GTIN, and makes other observed fields optional.
+Unknown properties remain forbidden by the generated schema. No missing reviews,
+ratings or ingredient facts are invented. Unmapped terms, custom/nested contexts,
+nulls, duplicate keys/identities and malformed core fields fail explicitly.
+
+Vendored the official Schema.org context with source/date/hash/license provenance.
+Generated profiles/gs1-product-v1/ for all four products at the requested profile
+ID, including context, full/disclosure schemas, input inventory and NOTICE. Added
+docs/PRODUCT_PROFILE_HELPER.md and a Further Examples navigation entry. The helper
+uses only Python's standard library and requires a new output directory.
+
+Validation (all exit 0):
+- python3 scripts/test_product_profile.py: 6 tests passed.
+- cargo test --locked --test product_profile: passed on four synthetic products.
+- GS1_PRODUCT_DIR=/var/software/gitrepos/chris-day/gs1-product/docs/products
+  cargo test --locked --test product_profile: passed on the four real sidecars.
+  Both tests compare canonical RDF against the official context, validate schema
+  constraints, issue and verify genuine credentials with temporary keys, check
+  original product values and unchanged source hashes.
+- cargo fmt, cargo clippy --locked --all-targets --all-features -- -D warnings:
+  passed (existing read-only dependency-cache messages remain nonfatal).
+- bash scripts/docs.sh build: passed; no issues found.
+- Helper --help and git diff --check: passed.
+
+No persistent issuer keys/status were used or changed; no website files were
+modified or deployed. Full Rust suite was not rerun because runtime Rust code did
+not change. Generated schemas describe observed structure, not GS1 business-rule
+conformance. Runtime pin configuration and batch issuance remain later steps.

@@ -1,0 +1,4 @@
+Schema.org term mappings: Google, Yahoo, Microsoft and Yandex.
+Source: https://schema.org/docs/jsonldcontext.json (2026-10-07).
+License: https://creativecommons.org/licenses/by-sa/3.0/
+Changes: selected definitions and dependencies, scoped under a Holon product property.

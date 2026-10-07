@@ -1,0 +1,104 @@
+{
+  "profileId": "https://gs1-product.perdl.com/schemas/product-holon-v1",
+  "contextId": "https://gs1-product.perdl.com/contexts/product-holon-v1.jsonld",
+  "products": [
+    {
+      "path": "00083783000085/product.jsonld",
+      "sha256": "4bd8f0363b94573025f18ddcb5355e32fdfafe6a7bd388d268c483932536bd74",
+      "id": "https://gs1-product.perdl.com/products/00083783000085/#product",
+      "gtin14": "00083783000085",
+      "name": "Sierra Nevada Torpedo Extra IPA, single 12 US fl oz bottle"
+    },
+    {
+      "path": "00195950643718/product.jsonld",
+      "sha256": "38017fade9d185a2ed909cd8e3f571459845886324f4fd7bfd3a060063409ca9",
+      "id": "https://gs1-product.perdl.com/products/00195950643718/#product",
+      "gtin14": "00195950643718",
+      "name": "Apple iPhone 17 256GB White"
+    },
+    {
+      "path": "05000119096753/product.jsonld",
+      "sha256": "3cc99d14dc877a932608ff235718b8d806f5f6c71121c3c52e7305de70f0d9fa",
+      "id": "https://gs1-product.perdl.com/products/05000119096753/#product",
+      "gtin14": "05000119096753",
+      "name": "Tesco Raspberry Jam 454g"
+    },
+    {
+      "path": "09506000134352/product.jsonld",
+      "sha256": "bed6fe41bd5bf1e10de035dcf95c8c039c4eec9bb9e10e65ddd3ecaf97c46efd",
+      "id": "https://gs1-product.perdl.com/products/09506000134352/#product",
+      "gtin14": "09506000134352",
+      "name": "Dal Giardino Risotto Rice with Mushrooms 411g"
+    }
+  ],
+  "schemaorg": {
+    "source": "https://schema.org/docs/jsonldcontext.json",
+    "retrieved": "2026-10-07",
+    "sha256": "65d0c5d17def9b171b7697bb0929eed17aa32f19af539e15302b6c20479b8930",
+    "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "attribution": "Schema.org sponsors: Google, Yahoo, Microsoft and Yandex",
+    "changes": "Unmodified downloaded context snapshot"
+  },
+  "terms": [
+    "Brand",
+    "DefinedRegion",
+    "MerchantReturnPolicy",
+    "MonetaryAmount",
+    "Offer",
+    "OfferShippingDetails",
+    "Organization",
+    "Product",
+    "PropertyValue",
+    "QuantitativeValue",
+    "ShippingDeliveryTime",
+    "additionalProperty",
+    "addressCountry",
+    "applicableCountry",
+    "availability",
+    "brand",
+    "category",
+    "color",
+    "currency",
+    "deliveryTime",
+    "depth",
+    "description",
+    "gtin14",
+    "handlingTime",
+    "hasMerchantReturnPolicy",
+    "height",
+    "image",
+    "itemCondition",
+    "maxValue",
+    "minValue",
+    "model",
+    "mpn",
+    "name",
+    "offers",
+    "price",
+    "priceCurrency",
+    "priceValidUntil",
+    "returnPolicyCategory",
+    "seller",
+    "shippingDestination",
+    "shippingDetails",
+    "shippingRate",
+    "sku",
+    "transitTime",
+    "unitCode",
+    "url",
+    "value",
+    "weight",
+    "width"
+  ],
+  "requiredProductFields": [
+    "@id/id",
+    "@type/type",
+    "gtin14",
+    "name"
+  ],
+  "notes": [
+    "Other product fields are optional; observed value types are preserved.",
+    "No claims are added, coerced or corrected.",
+    "Schemas describe observed shapes, not GS1 business-rule conformance."
+  ]
+}

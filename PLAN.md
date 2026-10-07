@@ -194,3 +194,15 @@ Clarifications made during implementation:
   continue rejecting HTML and altered documents.
 - Document the root cause, rebuild/retry commands and separate 600-second CDN
   caching limitation. Validate publication regression tests and the full suite.
+
+## Shared product profile helper — 2026-10-07
+
+- Discover product.jsonld recursively beneath a selected docs/products directory.
+- Preserve official Schema.org term definitions in a scoped product context;
+  infer optional product-specific shapes while requiring core identity fields.
+- Use https://gs1-product.perdl.com/schemas/product-holon-v1 and generate full
+  and disclosure subject schemas, source inventory/digests and attribution.
+- Reject unsupported contexts/terms and invalid input rather than inventing data.
+- Validate synthetic and all four real products using RDF equivalence, actual
+  temporary-key issuance/verification, immutable sources and schema constraints.
+- Document the helper under Further Examples and preserve the existing issuer state.

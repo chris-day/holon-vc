@@ -428,6 +428,10 @@ schema configuration. Verification should report an authentic assertion with
 active status. Trust is a separate verifier decision; domain control alone does
 not create a `trusted-assertion` policy.
 
+For the four Schema.org sidecars under the target site’s `docs/products`, first
+use the [shared product profile helper](PRODUCT_PROFILE_HELPER.md). Their shape
+differs from the earlier single-product fixture.
+
 For [GS1 Risotto Rice](Product-VC-example.md), retain the product context and paired
 schemas from the guide, but use this persistent data directory, these suites,
 `did:web:gs1-product.perdl.com` as the source, and this `products` status registry.

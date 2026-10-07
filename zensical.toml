@@ -18,6 +18,7 @@ nav = [
     { "GS1 Product issuer setup" = "GS1_PRODUCT_ISSUER.md" },
   ] },
   { "Further Examples" = [
+    { "Shared product profile helper" = "PRODUCT_PROFILE_HELPER.md" },
     { "GS1 Risotto Rice" = "Product-VC-example.md" },
   ] },
   { "Design" = [
