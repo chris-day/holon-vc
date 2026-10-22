@@ -7,16 +7,18 @@ Architecture and examples are maintained alongside those documents.
 ## Install the pinned Python environment
 
 Run from the repository root. Reuse `.venv` if it already exists; create it only
-when setting up a new checkout.
+when setting up a new checkout. Verify that an existing environment uses Python
+3.14 before installing dependencies. Do not install into system Python.
 
 ```sh
-python3 -m venv .venv
+python3.14 -m venv .venv
+.venv/bin/python --version
 .venv/bin/python -m pip install -r requirements-docs.txt
 .venv/bin/python -m pip check
 ```
 
 `requirements-docs.in` names the direct dependency. `requirements-docs.txt` pins
-Zensical and its installed dependency versions for repeatable installation. The
+Zensical, its installed dependency versions and pip for repeatable installation. The
 site uses the bundled Markdown, Pygments and PyMdown Extensions packages; no
 separate MkDocs plugin stack is required. Python 3.14 is the environment used to
 validate this kit.
@@ -79,15 +81,29 @@ and [native diagram](https://zensical.org/docs/authoring/diagrams/) guidance.
 
 ## Updating packages
 
-Change the desired Zensical version in `requirements-docs.in`, then update this
-virtual environment and regenerate the resolved requirements:
+Upgrade within `.venv`, including Zensical's dependencies, and check the package
+index for any remaining outdated packages. These commands use stable releases:
 
 ```sh
-.venv/bin/python -m pip install --upgrade -r requirements-docs.in
-.venv/bin/python -m pip freeze > requirements-docs.txt
+.venv/bin/python -m pip install --upgrade pip
+.venv/bin/python -m pip install --upgrade --force-reinstall zensical
+.venv/bin/python -m pip list --outdated
 .venv/bin/python -m pip check
+```
+
+Resolve any remaining outdated packages within the dependencies' compatibility
+constraints. Record both the direct Zensical pin and the complete resolved
+environment (including pip), then validate:
+
+```sh
+.venv/bin/python -c 'from importlib.metadata import version; from pathlib import Path; Path("requirements-docs.in").write_text("# Direct documentation dependency. Resolved versions are in requirements-docs.txt.\nzensical==" + version("zensical") + "\n")'
+.venv/bin/python -m pip freeze --all > requirements-docs.txt
+.venv/bin/python -m unittest discover -s scripts -p 'test_*.py'
 bash scripts/docs.sh build
 ```
+
+There is no installable local Python package or editable-development extra;
+the application is Rust and these Python dependencies support its documentation.
 
 Review dependency and generated-content changes before publishing. When command
 behavior or crypto profiles change, also rerun the executable workflow and update

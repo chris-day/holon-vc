@@ -406,3 +406,26 @@ publication steps. The diff example handles expected differences under set -e.
 Documentation-only validation: strict Zensical build passed with no issues,
 all seven Bash blocks passed bash -n, and git diff --check passed. No generated
 profiles, issuer data or target website files were changed.
+
+## Python documentation environment refresh — 2026-10-22
+
+The checkout at /var/software/gitrepos/chris-day/holon-vc had no .venv. Created it
+with /usr/bin/python3.14 (Python 3.14.4), matching the documentation and CI version.
+Installed the existing requirements, then ran the requested exact command:
+.venv/bin/python -m pip install --upgrade --force-reinstall zensical
+All installations used .venv/bin/python -m pip; system Python was unchanged.
+No local Python packaging metadata or editable development extras exist.
+
+Upgrades from the previous pins: Zensical 0.0.65 -> 0.0.71, Markdown 3.11 -> 3.11.2,
+MarkupSafe 3.0.3 -> 3.0.4, pymdown-extensions 12.1 -> 12.3, tomli 2.4.1 -> 2.5.0.
+The new environment's bootstrap pip upgraded from 25.1.1 to 26.2.2. Remaining
+packages were already current. Updated requirements-docs.in and requirements-docs.txt
+(including a pip pin), and documented explicit Python 3.14 setup, exact Zensical
+upgrade, pin regeneration and helper tests in docs/DOCUMENTATION.md.
+
+Verification: pip check passed; pip list --outdated --format=json returned [];
+all nine tests passed via .venv/bin/python -m unittest discover -s scripts -p
+ 'test_*.py'; bash scripts/docs.sh build passed clean/strict with no issues;
+installed pins and git diff --check passed. No compatibility fixes or older-version
+exceptions were necessary. Rust code/dependencies were unchanged; Rust tests were
+not rerun for this Python documentation dependency update.
